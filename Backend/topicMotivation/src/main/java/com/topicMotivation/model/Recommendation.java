@@ -3,7 +3,7 @@ package com.topicMotivation.model;
 
 import java.util.List;
 
-public class Recomendation {
+public class Recommendation {
 
     private Long id;
     private String title;
