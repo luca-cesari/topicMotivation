@@ -1,8 +1,14 @@
 package com.topicMotivation.model;
 
 
-import java.util.List;
+import lombok.*;
 
+import java.util.List;
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Recommendation {
 
     private Long id;
@@ -13,4 +19,6 @@ public class Recommendation {
     private String link;
 
     private List<String> labels;
+
+
 }
