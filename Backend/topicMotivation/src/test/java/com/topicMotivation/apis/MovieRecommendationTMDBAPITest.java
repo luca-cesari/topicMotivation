@@ -1,7 +1,7 @@
 package com.topicMotivation.apis;
 
 import com.topicMotivation.model.Recommendation;
-import com.topicMotivation.service.api.MoviesGetter.MovieRecommendationTMDBAPI;
+import com.topicMotivation.service.api.MoviesGetter.TMDBAPI;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MovieRecommendationTMDBAPITest {
 
     @Autowired
-    private MovieRecommendationTMDBAPI movieRecommendationTMDBAPI;
+    private TMDBAPI TMDBAPI;
 
     @Test
     void testGetMovieRecommendations() {
@@ -24,7 +24,7 @@ class MovieRecommendationTMDBAPITest {
         String topic = "Inception";
 
 
-        List<Recommendation> recommendations = movieRecommendationTMDBAPI.getMovieRecommendations(topic);
+        List<Recommendation> recommendations = TMDBAPI.getMovieRecommendations(topic);
 
 
         assertNotNull(recommendations, "La lista de recomendaciones no debería ser null");
@@ -36,7 +36,7 @@ class MovieRecommendationTMDBAPITest {
         assertNotNull(firstMovie.getDescription(), "La descripción no debería ser null");
         assertTrue(firstMovie.getLink().contains("https://www.themoviedb.org/movie/"), "El link no es válido");
 
-        
+
         recommendations.forEach(movie -> System.out.println(movie.getTitle() + " - " + movie.getLink()));
     }
 }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class MovieRecommendationTMDBAPI {
+public class TMDBAPI {
 
     @Value("${tmdb.api.key}")
     private String apiKey;
