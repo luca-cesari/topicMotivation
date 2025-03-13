@@ -6,91 +6,162 @@
     <title>TopicMotivation</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.jpg">
     <style>
         body {
-            background: #f8f9fa;
-            color: #212529;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2d3436;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            padding: 20px 0;
         }
         .container {
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
         }
         .form-control {
             background: #ffffff;
-            border: 1px solid #ced4da;
-            color: #212529;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
         }
         .form-control:focus {
             background: #ffffff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+            border-color: #007bff;
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.2);
         }
         .btn-success {
-            background-color: #007bff;
+            background: linear-gradient(45deg, #007bff, #00b4db);
             color: #ffffff;
             border: none;
+            border-radius: 10px;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
         }
         .btn-success:hover {
-            background-color: #0056b3;
+            background: linear-gradient(45deg, #0056b3, #0088cc);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
         }
         .list-group-item {
             background: #ffffff;
-            border: 1px solid #ced4da;
-            color: #212529;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        .list-group-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         .list-group-item a {
             color: #007bff;
-            text-decoration: underline;
+            text-decoration: none;
+            font-weight: 500;
         }
         .list-group-item a:hover {
             color: #0056b3;
-        }
-        .logo {
-            width: 150px; /* Aumentar el tamaño de la imagen */
-            height: auto;
-            display: block;
-            margin: 0 auto 20px;
+            text-decoration: underline;
         }
         .title {
-            font-family: 'Arial', sans-serif;
-            font-size: 2.5rem;
-            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
             text-align: center;
             margin-bottom: 10px;
+            background: linear-gradient(45deg, #007bff, #00b4db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         .description {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-size: 1.2rem;
             text-align: center;
             margin-bottom: 30px;
+            color: #636e72;
+        }
+        #loading {
+            text-align: center;
+            padding: 20px;
+        }
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+            margin-right: 10px;
+        }
+        .input-group {
+            position: relative;
+        }
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #007bff;
+        }
+        .input-group input {
+            padding-left: 45px;
+        }
+        .recommendations-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2d3436;
+            margin: 30px 0 20px;
+            text-align: center;
+        }
+        .badge {
+            background: #e3f2fd;
+            color: #007bff;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-weight: 500;
+            margin: 5px;
         }
     </style>
 </head>
 <body>
-
-    <div class="container mt-5">
+    <div class="container">
         <h1 class="title">Topic Motivation</h1>
-        <img src="logo.jpg" alt="Logo" class="logo">
-        <p class="description">Get inspired to study with related books, movies, and music!</p>
-
+        <p class="description">¡Encuentra inspiración para estudiar con libros, películas y música relacionados!</p>
+        
         <!-- Topic Input -->
         <div class="mt-4">
-            <h5>Enter Topic:</h5>
-            <input type="text" id="topicInput" class="form-control" placeholder="Enter a topic (e.g., science, history)">
+            <div class="input-group">
+                <i class="fas fa-search"></i>
+                <input type="text" id="topicInput" class="form-control" placeholder="Ingresa un tema (ej: ciencia, historia)">
+            </div>
         </div>
 
         <!-- Search Button -->
-        <button class="btn btn-success mt-3" onclick="fetchRecommendations()">Get Inspiration</button>
+        <button class="btn btn-success" onclick="fetchRecommendations()">
+            <i class="fas fa-lightbulb me-2"></i>Obtener Inspiración
+        </button>
 
         <!-- Loading Indicator -->
-        <div id="loading" class="mt-3 text-primary" style="display: none;">
-            <div class="spinner-border" role="status"></div> Fetching recommendations...
+        <div id="loading" class="mt-3" style="display: none;">
+            <div class="spinner-border text-primary" role="status"></div>
+            <span class="ms-2">Buscando recomendaciones...</span>
         </div>
 
         <!-- Results -->
-        <h3 class="mt-4">Your Recommendations:</h3>
-        <ul id="results" class="list-group mt-2"></ul>
+        <h3 class="recommendations-title">Tus Recomendaciones:</h3>
+        <ul id="results" class="list-group"></ul>
     </div>
 
     <!-- Bootstrap JS -->
@@ -99,30 +170,29 @@
     <!-- JavaScript Logic -->
     <script>
         function fetchRecommendations() {
-            // Get the topic input value
             let topic = document.getElementById("topicInput").value.trim();
 
-            // Validate input
             if (topic === "") {
-                alert("Please enter a topic.");
+                alert("Por favor, ingresa un tema.");
                 return;
             }
 
-            // Show loading indicator
             document.getElementById("loading").style.display = "block";
-
-            // API request
             let url = `http://localhost:8080/api/recommendations?label=${topic}`;
             
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
                     let resultsList = document.getElementById("results");
-                    resultsList.innerHTML = ""; // Clear previous results
-                    document.getElementById("loading").style.display = "none"; // Hide loading indicator
+                    resultsList.innerHTML = "";
+                    document.getElementById("loading").style.display = "none";
 
                     if (data.length === 0) {
-                        resultsList.innerHTML = "<li class='list-group-item text-danger'>No recommendations found. Try a different topic!</li>";
+                        resultsList.innerHTML = `
+                            <li class='list-group-item text-center'>
+                                <i class="fas fa-exclamation-circle text-warning me-2"></i>
+                                No se encontraron recomendaciones. ¡Intenta con otro tema!
+                            </li>`;
                         return;
                     }
 
@@ -130,10 +200,25 @@
                         let listItem = document.createElement("li");
                         listItem.classList.add("list-group-item");
                         listItem.innerHTML = `
-                            <strong>${item.title}</strong> (${item.type}) - ${item.autor} <br>
-                            <p>${item.description}</p>
-                            <a href="${item.link}" target="_blank">More info</a><br>
-                            <small>Labels: ${item.labels ? item.labels.join(', ') : 'No labels'}</small>
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <strong>${item.title}</strong>
+                                    <span class="badge bg-primary ms-2">${item.type}</span>
+                                </div>
+                                <i class="fas fa-${getIconForType(item.type)} text-primary"></i>
+                            </div>
+                            <p class="mt-2 mb-2">${item.description}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <small class="text-muted">Autor: ${item.autor}</small>
+                                </div>
+                                <a href="${item.link}" target="_blank" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-external-link-alt me-1"></i>Más información
+                                </a>
+                            </div>
+                            <div class="mt-2">
+                                ${item.labels ? item.labels.map(label => `<span class="badge">${label}</span>`).join('') : ''}
+                            </div>
                         `;
                         resultsList.appendChild(listItem);
                     });
@@ -141,10 +226,18 @@
                 .catch(error => {
                     console.error("Error fetching recommendations:", error);
                     document.getElementById("loading").style.display = "none";
-                    alert("Something went wrong. Please try again later.");
+                    alert("Algo salió mal. Por favor, intenta de nuevo más tarde.");
                 });
         }
-    </script>
 
+        function getIconForType(type) {
+            switch(type.toLowerCase()) {
+                case 'book': return 'book';
+                case 'movie': return 'film';
+                case 'music': return 'music';
+                default: return 'star';
+            }
+        }
+    </script>
 </body>
 </html>
