@@ -1,20 +1,33 @@
 package com.topicMotivation.service;
 
+import com.topicMotivation.model.BooksRecommendator;
 import com.topicMotivation.model.MoviesRecommendator;
 import com.topicMotivation.model.Recommendation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class RecommendationService {
 
     @Autowired
-    MoviesRecommendator MoviesRecommendator;
+    MoviesRecommendator moviesRecommendator;
+
+    @Autowired
+    BooksRecommendator booksRecommendator;
 
     public List<Recommendation> searchForLabels(String label) {
-        return MoviesRecommendator.getMoviesThatMatchWith(label);
+        List<Recommendation> allRecommendations = new ArrayList<>();
+
+        // Obtener recomendaciones de películas
+        allRecommendations.addAll(moviesRecommendator.getMoviesThatMatchWith(label));
+
+        // Obtener recomendaciones de libros
+        allRecommendations.addAll(booksRecommendator.getBooksThatMatchWith(label));
+
+        return allRecommendations;
     }
 
 }
