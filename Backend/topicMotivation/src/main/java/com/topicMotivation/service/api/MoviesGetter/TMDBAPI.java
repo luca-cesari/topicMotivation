@@ -48,12 +48,18 @@ public class TMDBAPI {
             JsonNode results = root.path("results");
 
             for (JsonNode result : results) {
+                String posterPath = result.path("poster_path").asText();
+                String imageUrl = posterPath != null && !posterPath.isEmpty()
+                        ? "https://image.tmdb.org/t/p/w500" + posterPath
+                        : "https://via.placeholder.com/500x750?text=No+Image";
+
                 Recommendation recommendation = Recommendation.builder()
                         .id(result.path("id").asLong())
                         .title(result.path("title").asText())
                         .type("película")
                         .description(result.path("overview").asText())
                         .link("https://www.themoviedb.org/movie/" + result.path("id").asLong())
+                        .imageUrl(imageUrl)
                         .build();
                 recommendations.add(recommendation);
             }

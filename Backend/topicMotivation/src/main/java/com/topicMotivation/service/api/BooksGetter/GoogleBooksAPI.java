@@ -66,6 +66,17 @@ public class GoogleBooksAPI {
                     link = "https://books.google.com/books?id=" + item.path("id").asText();
                 }
 
+                // Obtener URL de la imagen
+                String imageUrl = "https://via.placeholder.com/500x750?text=No+Image";
+                if (volumeInfo.has("imageLinks")) {
+                    JsonNode imageLinks = volumeInfo.path("imageLinks");
+                    if (imageLinks.has("thumbnail")) {
+                        imageUrl = imageLinks.path("thumbnail").asText()
+                                .replace("http://", "https://")
+                                .replace("zoom=1", "zoom=2");
+                    }
+                }
+
                 Recommendation recommendation = Recommendation.builder()
                         .id(item.path("id").asLong())
                         .title(volumeInfo.path("title").asText())
@@ -73,6 +84,7 @@ public class GoogleBooksAPI {
                         .autor(author)
                         .description(description)
                         .link(link)
+                        .imageUrl(imageUrl)
                         .labels(List.of(topic))
                         .build();
                 recommendations.add(recommendation);

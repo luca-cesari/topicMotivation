@@ -1,9 +1,9 @@
 package com.topicMotivation.model;
 
-
 import lombok.*;
 
 import java.util.List;
+
 @Builder
 @Getter
 @Setter
@@ -17,8 +17,8 @@ public class Recommendation {
     private String autor;
     private String description;
     private String link;
+    private String imageUrl; // URL de la imagen (poster de película o portada de libro)
 
     private List<String> labels;
-
 
 }
