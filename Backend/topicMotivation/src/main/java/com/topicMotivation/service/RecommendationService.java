@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -26,6 +27,9 @@ public class RecommendationService {
 
         // Obtener recomendaciones de libros
         allRecommendations.addAll(booksRecommendator.getBooksThatMatchWith(label));
+
+        // Ordenar alfabéticamente por título
+        allRecommendations.sort(Comparator.comparing(Recommendation::getTitle, String.CASE_INSENSITIVE_ORDER));
 
         return allRecommendations;
     }

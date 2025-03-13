@@ -138,12 +138,22 @@
             text-align: center;
         }
         .badge {
-            background: #e3f2fd;
-            color: #007bff;
             padding: 5px 10px;
             border-radius: 15px;
             font-weight: 500;
             margin: 5px;
+        }
+        .badge-movie {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+        .badge-book {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+        .badge-label {
+            background: #e8f5e9;
+            color: #2e7d32;
         }
     </style>
 </head>
@@ -217,7 +227,7 @@
                                 <div class="d-flex justify-content-between align-items-start">
                                     <div>
                                         <strong>${item.title}</strong>
-                                        <span class="badge bg-primary ms-2">${item.type}</span>
+                                        <span class="badge ${item.type === 'película' ? 'badge-movie' : 'badge-book'} ms-2">${item.type}</span>
                                     </div>
                                     <i class="fas fa-${getIconForType(item.type)} text-primary"></i>
                                 </div>
@@ -231,7 +241,7 @@
                                     </a>
                                 </div>
                                 <div class="mt-2">
-                                    ${item.labels ? item.labels.map(label => `<span class="badge">${label}</span>`).join('') : ''}
+                                    ${item.labels ? item.labels.map(label => `<span class="badge badge-label">${label}</span>`).join('') : ''}
                                 </div>
                             </div>
                         `;
